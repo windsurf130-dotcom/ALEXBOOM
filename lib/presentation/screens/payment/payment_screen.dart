@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tochegando_driver_app/core/utils/translate.dart';
 
 import '../../../core/extensions/workspace.dart';
 import '../../../core/utils/common_widget.dart';
@@ -40,16 +39,16 @@ class _PaymentScreenState extends State<PaymentScreen> {
 
   void _onProceed(BuildContext context, PaymentMethod? method) {
     if (method == null) {
-      showErrorToastMessage("Por favor, selecione um método de pagamento".translate(context));
+      showErrorToastMessage("Por favor, selecione um método de pagamento");
       return;
     }
 
     if (method == PaymentMethod.cash) {
-      _showConfirmationDialog(context, "cash",
-          "O pagamento em dinheiro foi recebido? Se sim, clique para continuar.".translate(context));
+      _showConfirmationDialog(
+          context, "cash", "O pagamento em dinheiro foi recebido? Se sim, clique para continuar.");
     } else if (method == PaymentMethod.online) {
       _showConfirmationDialog(
-          context, "online", "Tem certeza que deseja pagar online?".translate(context));
+          context, "online", "Tem certeza que deseja pagar online?");
     }
   }
 
@@ -89,16 +88,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
           .collection('drivers')
           .doc(driverId)
           .update({'ride_request': {}, 'rideStatus': 'available'});
-
-    } catch (e) {
-      //
-
-    }
+    } catch (e) {}
 
     if (isOpenBottomsheet) return;
 
     isOpenBottomsheet = true;
-      // ignore_for_file: use_build_context_synchronously
+
     showModalBottomSheet(
       barrierColor: blackColor.withAlpha(64),
       elevation: 0,
@@ -121,9 +116,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
       child: Scaffold(
         backgroundColor: whiteColor,
         appBar: CustomAppBar(
-          title: "Resumo da Viagem".translate(context),
+          title: "Resumo da Viagem",
           onBackTap: () async {
-
             _onProceed(context, PaymentMethod.cash);
           },
         ),
@@ -163,7 +157,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           await _completeRideProcess(context);
                         } else if (state is UpdatePaymentFailure) {
                           Widgets.hideLoder(context);
-                          showErrorToastMessage(state.paymentMessage??"");
+                          showErrorToastMessage(state.paymentMessage ?? "");
                         }
                       },
                     ),
@@ -187,7 +181,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             child: myNetworkImage(widget.rideRequest.customer?.userPhoto ?? ""),
           ),
         ),
-        const SizedBox(height: 8,),
+        const SizedBox(height: 8),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -201,7 +195,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
         _buildStatusTag(context),
         const SizedBox(height: 15),
         Text(
-          "${'Por favor, cobre a tarifa de'.translate(context)} \n ${widget.rideRequest.customer?.userName ?? ''}.",
+          "Por favor, cobre a tarifa de \n ${widget.rideRequest.customer?.userName ?? ''}.",
           style: heading3Grey1(context).copyWith(fontSize: 15),
           textAlign: TextAlign.center,
         ),
@@ -229,8 +223,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
         children: [
           Icon(Icons.verified, color: whiteColor, size: 18),
           const SizedBox(width: 10),
-          Text("CORRIDA CONCLUÍDA".translate(context),
-              style: regular(context).copyWith(color: whiteColor,fontWeight: FontWeight.bold)),
+          Text(
+            "CORRIDA CONCLUÍDA",
+            style: regular(context)
+                .copyWith(color: whiteColor, fontWeight: FontWeight.bold),
+          ),
         ],
       ),
     );
@@ -241,15 +238,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
       decoration: BoxDecoration(
         color: themeColor.withValues(alpha: .1),
         borderRadius: BorderRadius.circular(18),
-       ),
+      ),
       padding: const EdgeInsets.all(16),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Left side timeline
+          // Left
           Column(
             children: [
-              // Pickup icon
               Container(
                 padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
@@ -257,24 +253,25 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(
-                  Icons.my_location, // modern pickup icon
+                  Icons.my_location,
                   size: 20,
                   color: Colors.green,
                 ),
               ),
-              // Line between
               Container(
                 width: 2,
                 height: 40,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Colors.green.shade200, Colors.red.shade200],
+                    colors: [
+                      Colors.green.shade200,
+                      Colors.red.shade200
+                    ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                   ),
                 ),
               ),
-              // Drop icon
               Container(
                 padding: const EdgeInsets.all(6),
                 decoration: BoxDecoration(
@@ -282,7 +279,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(
-                  Icons.flag, // modern drop icon
+                  Icons.flag,
                   size: 20,
                   color: Colors.red,
                 ),
@@ -291,14 +288,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
           ),
           const SizedBox(width: 14),
 
-          // Right side text
+          // Right
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Pickup
                 Text(
-                  'Coleta'.translate(context),
+                  'Coleta',
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.green.shade600,
@@ -309,13 +305,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 const SizedBox(height: 2),
                 Text(
                   widget.rideRequest.pickupLocation?.pickupAddress ?? "",
-                  style:heading3Grey1(context).copyWith(fontSize: 12),
+                  style: heading3Grey1(context).copyWith(fontSize: 12),
                 ),
                 const SizedBox(height: 20),
-
-                // Drop
                 Text(
-                  'Destino'.translate(context),
+                  'Destino',
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.red.shade600,
@@ -336,8 +330,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
     );
   }
 
-
-
   Widget _buildActionButton(
       BuildContext context, PaymentMethod? selectedMethod) {
     if (paymentMethod == "cash" || paymentMethod == "") {
@@ -345,14 +337,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
         textColor: blackColor,
         backgroundColor: themeColor,
         onPressed: () => _onProceed(context, selectedMethod),
-        text: "Cobrar".translate(context),
+        text: "Cobrar",
       );
     } else {
       return CustomsButtons(
         textColor: blackColor,
         backgroundColor: themeColor,
         onPressed: () {},
-        text: "Aguardando pagamento...".translate(context),
+        text: "Aguardando pagamento...",
       );
     }
   }
