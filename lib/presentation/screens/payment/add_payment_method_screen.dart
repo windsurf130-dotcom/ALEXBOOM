@@ -63,7 +63,7 @@ class _AddPaymentDetailsState extends State<AddPaymentDetails> {
     try {
       final int? parsedId = int.tryParse(widget.id.toString());
       if (parsedId == null) {
-        showErrorToastMessage("ID de método de pagamento inválido: ${widget.id}".translate(context));
+        showErrorToastMessage("ID de método de pagamento inválido: ${widget.id}");
         return;
       }
 
@@ -127,7 +127,7 @@ class _AddPaymentDetailsState extends State<AddPaymentDetails> {
 
       context.read<PaymentMethodCubits>().addPaymentMethod(context, map: map);
     } catch (e) {
-      showErrorToastMessage("Ocorreu um erro: $e".translate(context));
+      showErrorToastMessage("Ocorreu um erro: $e");
     }
   }
 
@@ -137,7 +137,7 @@ class _AddPaymentDetailsState extends State<AddPaymentDetails> {
       backgroundColor: notifires.getbgcolor,
       appBar: CustomAppBar(
         title:
-        '${widget.addedit.toString().translate(context)} ${'${toTitleCaseFromCamel(widget.type??'').toString().translate(context)} ${'Detalhes'.translate(context)}'.translate(context)}',
+        '${widget.addedit.toString()} ${'${toTitleCaseFromCamel(widget.type??'').toString()} ${'Detalhes'}'}',
         backgroundColor: notifires.getbgcolor,
 
         titleColor: notifires.getGrey1whiteColor,
@@ -165,11 +165,11 @@ class _AddPaymentDetailsState extends State<AddPaymentDetails> {
               children: [
                 TextFieldAdvance(
                   inputAlignment: TextAlign.start,
-                  txt: "Nome da Conta".translate(context),
+                  txt: "Nome da Conta",
                   inputType: TextInputType.text,
                   validator: (value) {
                     if (value != null && value.isEmpty) {
-                      return "O nome da conta é obrigatório".translate(context);
+                      return "O nome da conta é obrigatório";
                     }
                     return null;
                   },
@@ -180,11 +180,11 @@ class _AddPaymentDetailsState extends State<AddPaymentDetails> {
                 ),
                 TextFieldAdvance(
                   inputAlignment: TextAlign.start,
-                  txt: "Número da Conta".translate(context),
+                  txt: "Número da Conta",
                   inputType: TextInputType.text,
                   validator: (value) {
                     if (value != null && value.isEmpty) {
-                      return "O número da conta está vazio".translate(context);
+                      return "O número da conta está vazio";
                     }
                     return null;
                   },
@@ -195,11 +195,11 @@ class _AddPaymentDetailsState extends State<AddPaymentDetails> {
                 ),
                 TextFieldAdvance(
                   inputAlignment: TextAlign.left,
-                  txt: "Nome do Banco".translate(context),
+                  txt: "Nome do Banco",
                   inputType: TextInputType.text,
                   validator: (value) {
                     if (value != null && value.isEmpty) {
-                      return "O nome do banco é obrigatório".translate(context);
+                      return "O nome do banco é obrigatório";
                     }
                     return null;
                   },
@@ -210,11 +210,11 @@ class _AddPaymentDetailsState extends State<AddPaymentDetails> {
                 ),
                 TextFieldAdvance(
                   inputAlignment: TextAlign.start,
-                  txt: "Nome da Agência".translate(context),
+                  txt: "Nome da Agência",
                   inputType: TextInputType.text,
                   validator: (value) {
                     if (value != null && value.isEmpty) {
-                      return "O nome da agência está vazio".translate(context);
+                      return "O nome da agência está vazio";
                     }
                     return null;
                   },
@@ -225,11 +225,11 @@ class _AddPaymentDetailsState extends State<AddPaymentDetails> {
                 ),
                 TextFieldAdvance(
                   inputAlignment: TextAlign.start,
-                  txt: "Código IBAN".translate(context),
+                  txt: "Código IBAN",
                   inputType: TextInputType.text,
                   validator: (value) {
                     if (value != null && value.isEmpty) {
-                      return "O código IBAN está vazio".translate(context);
+                      return "O código IBAN está vazio";
                     }
                     return null;
                   },
@@ -240,11 +240,11 @@ class _AddPaymentDetailsState extends State<AddPaymentDetails> {
                 ),
                 TextFieldAdvance(
                   inputAlignment: TextAlign.start,
-                  txt: "Código SWIFT/BIC".translate(context),
+                  txt: "Código SWIFT/BIC",
                   inputType: TextInputType.text,
                   validator: (value) {
                     if (value != null && value.isEmpty) {
-                      return "O código SWIFT/BIC está vazio".translate(context);
+                      return "O código SWIFT/BIC está vazio";
                     }
                     return null;
                   },
@@ -254,7 +254,7 @@ class _AddPaymentDetailsState extends State<AddPaymentDetails> {
                   height: 16,
                 ),
                 CustomsButtons(
-                    text: "Enviar".translate(context),
+                    text: "Enviar",
                     backgroundColor: themeColor,
                     onPressed: () {
                       submitPaymentDetails();
@@ -272,12 +272,12 @@ class _AddPaymentDetailsState extends State<AddPaymentDetails> {
                     ? TextFieldAdvance(
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return "Por favor, insira o ID UPI".translate(context);
+                        return "Por favor, insira o ID UPI";
                       }
                       return null;
                     },
                     inputAlignment: TextAlign.start,
-                    txt: "UPI".translate(context),
+                    txt: "UPI",
                     textEditingControllerCommon: emailText,
                     inputType: TextInputType.emailAddress,
                     maxlines: null,
@@ -290,7 +290,7 @@ class _AddPaymentDetailsState extends State<AddPaymentDetails> {
                       return validateEmail(value!,context);
                     },
                     inputAlignment: TextAlign.start,
-                    txt: "Email".translate(context),
+                    txt: "Email",
                     textEditingControllerCommon: emailText,
                     inputType: TextInputType.emailAddress,
                     maxlines: null,
@@ -303,14 +303,14 @@ class _AddPaymentDetailsState extends State<AddPaymentDetails> {
                   validator: (value) {
                     if (value!.isEmpty) {
                       return "Por favor, insira uma observação"
-                          .translate(context);
+                          ;
                     }
                     return null;
                   },
                   maxlength: 1000,
                   inputAlignment: TextAlign.start,
                   minlines: 10,
-                  txt: "Observação..".translate(context),
+                  txt: "Observação..",
                   textEditingControllerCommon: noteText,
                   inputType: TextInputType.text,
 
@@ -329,7 +329,7 @@ class _AddPaymentDetailsState extends State<AddPaymentDetails> {
                 ),
                 const SizedBox(height: 25),
                 CustomsButtons(
-                    text: "Enviar".translate(context),
+                    text: "Enviar",
                     backgroundColor: themeColor,
                     onPressed: () {
                       bool isValid = false;
@@ -345,7 +345,7 @@ class _AddPaymentDetailsState extends State<AddPaymentDetails> {
                       if (!isValid) {
                         showErrorToastMessage(
                             "Por favor, preencha todos os detalhes"
-                                .translate(context));
+                                );
                         return;
                       }
 
