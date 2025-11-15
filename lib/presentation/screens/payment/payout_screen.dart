@@ -70,9 +70,9 @@ class _PayoutScreenState extends State<PayoutScreen> {
     if (cubit.state is AmountPayoutSuccess) {
       _amountController.clear();
       _fetchTransactions();
-      showToastMessage("Withdrawal request submitted".translate(context));
+      showToastMessage("Pedido de retirada submetido".translate(context));
     } else if (cubit.state is AmountPayoutFailed) {
-      showErrorToastMessage("Withdrawal failed".translate(context));
+      showErrorToastMessage("Pedido de retirada falhou".translate(context));
     }
   }
 
@@ -96,7 +96,7 @@ class _PayoutScreenState extends State<PayoutScreen> {
           : null,
       backgroundColor: notifires.getbgcolor,
       appBar: CustomAppBar(
-        title: "Payouts",
+        title: "Pagamentos",
         titleColor: notifires.getGrey1whiteColor,
         backgroundColor: notifires.getbgcolor,
       ),
@@ -152,7 +152,7 @@ class _PayoutScreenState extends State<PayoutScreen> {
                             },
                             decoration: InputDecoration(
                               hintText:
-                                  "Enter withdrawal amount".translate(context),
+                                  "Insira o valor da retirada".translate(context),
                               hintStyle: regular2(context).copyWith(
                                 color: notifires.getGrey1whiteColor
                                     .withOpacity(0.6),
@@ -245,7 +245,7 @@ class _PayoutScreenState extends State<PayoutScreen> {
                                   child:isLoading?SizedBox(
                                     height: 25,width: 25,
                                       child: CircularProgressIndicator(color: whiteColor,)): Text(
-                                    "Withdraw".translate(context),
+                                    "Retirar".translate(context),
                                     style: heading3Grey1(context)
                                         .copyWith(color: blackColor),
                                   ),
@@ -259,7 +259,7 @@ class _PayoutScreenState extends State<PayoutScreen> {
                   const SizedBox(height: 8),
                   // Max limit hint
                   Text(
-                    "${"Your maximum withdrawal limit is".translate(context)} $currency $maxLimit"
+                    "${"Seu limite máximo de saque é".translate(context)} $currency $maxLimit"
                         .translate(context),
                     style: regular2(context).copyWith(
                       fontSize: 12,
@@ -275,7 +275,7 @@ class _PayoutScreenState extends State<PayoutScreen> {
                             double.tryParse(_amountController.text) ?? 0;
                         if (value <= 0) {
                           return Text(
-                            "Amount must be greater than 0".translate(context),
+                            "Valor deve ser maior que 0".translate(context),
                             style: regular2(context).copyWith(
                               fontSize: 12,
                               color: Colors.red,
@@ -284,7 +284,7 @@ class _PayoutScreenState extends State<PayoutScreen> {
                           );
                         } else if (value > maxLimit) {
                           return Text(
-                            "Amount exceeds maximum limit".translate(context),
+                            "O valor excede o limite máximo".translate(context),
                             style: regular2(context).copyWith(
                               fontSize: 12,
                               color: Colors.red,
@@ -304,13 +304,13 @@ class _PayoutScreenState extends State<PayoutScreen> {
               child: Row(
                 children: [
                   Text(
-                    "Transaction History".translate(context),
+                    "Histórico de transações".translate(context),
                     style: heading3(context),
                   ),
                   const Spacer(),
                   if (_transactions.isNotEmpty)
                     Text(
-                      "${_transactions.length} ${"transactions".translate(context)}",
+                      "${_transactions.length} ${"transações".translate(context)}",
                       style: TextStyle(
                         fontSize: 12,
                         color: notifires.getGrey1whiteColor.withOpacity(0.6),
@@ -331,7 +331,7 @@ class _PayoutScreenState extends State<PayoutScreen> {
                 child:  _transactions.isEmpty
                         ? Center(
                             child: Text(
-                            "No transactions found.".translate(context),
+                            "Nenhuma transação encontrada.".translate(context),
                             style: regular2(context),
                           ))
                         : ListView.builder(
@@ -419,7 +419,7 @@ class _PayoutScreenState extends State<PayoutScreen> {
                                               children: [
                                                 Flexible(
                                                   child: Text(
-                                                    "${"Date".translate(context)}: ${tx.createdAt ?? ""}",
+                                                    "${"Data".translate(context)}: ${tx.createdAt ?? ""}",
                                                     style: const TextStyle(
                                                       fontSize: 13,
                                                       color: Colors.grey,
@@ -429,7 +429,7 @@ class _PayoutScreenState extends State<PayoutScreen> {
                                                 const SizedBox(width: 8),
                                                 Flexible(
                                                   child: Text(
-                                                    "${"Method".translate(context)}: ${toTitleCaseFromCamel(tx.paymentMethod ?? "")}",
+                                                    "${"Método".translate(context)}: ${toTitleCaseFromCamel(tx.paymentMethod ?? "")}",
                                                     style: const TextStyle(
                                                       fontSize: 13,
                                                       color: Colors.grey,
@@ -467,11 +467,11 @@ class _PayoutScreenState extends State<PayoutScreen> {
 
   IconData _getStatusIcon(String? status) {
     switch (status?.toLowerCase()) {
-      case "success":
+      case "sucesso":
         return Icons.check_circle_outline;
-      case 'pending':
+      case 'pendente':
         return Icons.timelapse;
-      case 'failed':
+      case 'falha':
         return Icons.cancel;
       default:
         return Icons.info_outline;
@@ -480,11 +480,11 @@ class _PayoutScreenState extends State<PayoutScreen> {
 
   Color _getStatusColor(String? status) {
     switch (status?.toLowerCase()) {
-      case 'success':
+      case 'sucesso':
         return Colors.green;
-      case 'pending':
+      case 'pendente':
         return Colors.orange;
-      case 'failed':
+      case 'falha':
         return Colors.red;
       default:
         return Colors.grey;
@@ -531,7 +531,7 @@ class _PayoutScreenState extends State<PayoutScreen> {
                   const SizedBox(height: 16),
 
                   Text(
-                    "Choose Payout Method".translate(context),
+                    "Escolha o método de saque".translate(context),
                     style: heading2Grey1(context).copyWith(fontSize: 18),
                   ),
                   const SizedBox(height: 20),
@@ -587,7 +587,7 @@ class _PayoutScreenState extends State<PayoutScreen> {
                                     children: [
                                       Icon(
                                         method.payoutMethod?.toLowerCase() ==
-                                                "bank account"
+                                                "conta bancária"
                                             ? Icons.account_balance
                                             : Icons.account_balance_wallet,
                                         color: isSelected
@@ -597,7 +597,7 @@ class _PayoutScreenState extends State<PayoutScreen> {
                                       const SizedBox(width: 10),
                                       Expanded(
                                         child: Text(
-                                          method.payoutMethod ?? 'Unknown',
+                                          method.payoutMethod ?? 'Desconhecido',
                                           style: heading3(context).copyWith(
                                             fontWeight: FontWeight.bold,
                                             fontSize: 16,
@@ -618,28 +618,28 @@ class _PayoutScreenState extends State<PayoutScreen> {
                                   const SizedBox(height: 10),
                                   // Show details dynamically
                                   if (method.payoutMethod?.toLowerCase() ==
-                                      "bank account") ...[
+                                      "conta bancária") ...[
                                     if (method.details?.accountName != null)
                                       Text(
-                                          "${"Account Holder".translate(context)}: ${method.details!.accountName}",
+                                          "${"Titular da Conta".translate(context)}: ${method.details!.accountName}",
                                           style: regular2(context)),
                                     if (method.details?.accountNumber != null)
                                       Text(
-                                          "${"A/C Number".translate(context)}: ${method.details!.accountNumber}",
+                                          "${"Nº da Conta".translate(context)}: ${method.details!.accountNumber}",
                                           style: regular2(context)),
                                     if (method.details?.bankName != null)
-                                      Text("${"Bank".translate(context)}: ${method.details!.bankName}",
+                                      Text("${"Banco".translate(context)}: ${method.details!.bankName}",
                                           style: regular2(context)),
                                     if (method.details?.branchName != null)
                                       Text(
-                                          "${"Branch".translate(context)}: ${method.details!.branchName}",
+                                          "${"Agência".translate(context)}: ${method.details!.branchName}",
                                           style: regular2(context)),
                                     if (method.details?.iban != null)
                                       Text("${"IBAN".translate(context)}: ${method.details!.iban}",
                                           style: regular2(context)),
                                     if (method.details?.swiftCode != null)
                                       Text(
-                                          "${"SWIFT".translate(context)}: ${method.details!.swiftCode}",
+                                          "${"RÁPIDO".translate(context)}: ${method.details!.swiftCode}",
                                           style: regular2(context)),
                                   ] else ...[
                                     if (method.details?.email != null)
@@ -647,7 +647,7 @@ class _PayoutScreenState extends State<PayoutScreen> {
                                           "${"Email/UPI".translate(context)}: ${method.details!.email}",
                                           style: regular2(context)),
                                     if (method.details?.note != null)
-                                      Text("${"Note".translate(context)}: ${method.details!.note}",
+                                      Text("${"Observação".translate(context)}: ${method.details!.note}",
                                           style: regular2(context)),
                                   ],
                                 ],
@@ -684,7 +684,7 @@ class _PayoutScreenState extends State<PayoutScreen> {
                         child: SizedBox(
                           height: 45,
                           child: CustomsButtons(
-                              text: "Cancel",
+                              text: "Cancelar",
                               backgroundColor: notifires.getBoxColor,
                               onPressed: () {
                                 Navigator.pop(context);
@@ -697,12 +697,12 @@ class _PayoutScreenState extends State<PayoutScreen> {
                           child: SizedBox(
                             height: 45,
                             child: CustomsButtons(
-                                text: "Proceed",
+                                text: "Prosseguir",
                                 backgroundColor: themeColor,
                                 onPressed: () {
                                   if (selectedMethodId == null) {
                                     showErrorToastMessage(
-                                        "Please select a payment method.");
+                                        "Por favor, selecione um método de pagamento.");
                                     return;
                                   }
                                   Navigator.pop(context, selectedMethodId);
@@ -720,7 +720,7 @@ class _PayoutScreenState extends State<PayoutScreen> {
                           child: SizedBox(
                             height: 45,
                             child: CustomsButtons(
-                                text: "Add Account",
+                                text: "Adicionar conta",
                                 backgroundColor: themeColor,
                                 onPressed: () {
                                   goBack();

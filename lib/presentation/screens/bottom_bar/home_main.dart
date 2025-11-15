@@ -210,7 +210,7 @@ class _HomeMainState extends State<HomeMain>
                           ),
                           const SizedBox(height: 5),
                           Text(
-                            "History".translate(context),
+                            "História".translate(context),
                             style: headingBlack(context).copyWith(
                                 fontSize: 14,
                                 color: state.index == 1 ? blackColor : grey3),
@@ -238,7 +238,7 @@ class _HomeMainState extends State<HomeMain>
                           ),
                           const SizedBox(height: 5),
                           Text(
-                            "Finance".translate(context),
+                            "Financiar".translate(context),
                             style: headingBlack(context).copyWith(
                                 fontSize: 14,
                                 color: state.index == 2 ? blackColor : grey3),
@@ -262,7 +262,7 @@ class _HomeMainState extends State<HomeMain>
                           ),
                           const SizedBox(height: 5),
                           Text(
-                            "Account".translate(context),
+                            "Conta".translate(context),
                             style: headingBlack(context).copyWith(
                                 fontSize: 14,
                                 color: state.index == 3 ? blackColor : grey3),

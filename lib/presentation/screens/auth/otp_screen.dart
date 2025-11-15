@@ -344,16 +344,16 @@ class _OtpScreenState extends State<OtpScreen> {
                         stateAll.drivingLicenceBackStatus,
                       ];
 
-                      if (statusList.every((status) => status == "approved")) {
+                      if (statusList.every((status) => status == "aprovada")) {
                         context.read<DocumentApprovedStatusCubit>().updateDocumentApprovedStatus(docApprovedStatus: "approved");
-                        box.put("approved", true);
-                      } else if (statusList.contains("rejected")) {
+                        box.put("aprovada", true);
+                      } else if (statusList.contains("rejeitada")) {
                         context.read<DocumentApprovedStatusCubit>().updateDocumentApprovedStatus(docApprovedStatus: "rejected");
-                        box.put("approved", false);
+                        box.put("aprovada", false);
                       } else {
                         context.read<DocumentApprovedStatusCubit>().updateDocumentApprovedStatus(docApprovedStatus: "pending");
                         context.read<UpdateDriverParameterCubit>().updateDocApprovedStatus(docApprovedStatus: "pending");
-                        box.put("approved", false);
+                        box.put("aprovada", false);
                       }
                     }
                   }),

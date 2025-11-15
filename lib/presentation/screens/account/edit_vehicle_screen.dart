@@ -32,7 +32,7 @@ class _EditVehicleScreenState extends State<EditVehicleScreen> {
     state.textEditingVehicleBrandController.text =
         widget.myItems.vehicleMake?.toString() ?? "";
     state.textEditingVehicleColorController.text =
-        widget.myItems.vehicleColor ?? "Black";
+        widget.myItems.vehicleColor ?? "Preto";
     state.textEditingVehicleNumberController.text =
         widget.myItems.vehicleNumber?.toString() ?? "";
     state.textEditingVehicleModelController.text =
@@ -54,7 +54,7 @@ class _EditVehicleScreenState extends State<EditVehicleScreen> {
         vehcileTypeName: widget.myItems.vehicleType?.toString() ?? "");
     context.read<UpdateDriverParameterCubit>().updateVehicleTypeId(
         vehicleTypeId: widget.myItems.itemTypeId?.toString() ?? "");
-    state.updateVehicleColor(widget.myItems.vehicleColor ?? "Black");
+    state.updateVehicleColor(widget.myItems.vehicleColor ?? "Preto");
     state.updateVehicleModel(widget.myItems.vehicleModel?.toString() ?? "");
     state.updateVehicleMake(widget.myItems.vehicleMake?.toString() ?? "");
     state.updateVehicleYear(widget.myItems.vehicleYear ?? "2025");
@@ -82,7 +82,7 @@ class _EditVehicleScreenState extends State<EditVehicleScreen> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: CustomsButtons(
-                text: "Updated",
+                text: "Atualizada",
                 textColor: blackColor,
                 backgroundColor: themeColor,
                 onPressed: () {
@@ -91,15 +91,15 @@ class _EditVehicleScreenState extends State<EditVehicleScreen> {
 
 
                   if (state.state.vehicleTypeId.isEmpty) {
-                    showErrorToastMessage("Select the vehicle type".translate(context));
+                    showErrorToastMessage("Selecione o tipo de veículo".translate(context));
                     return;
                   }
                   if (state.state.vehicleMake.isEmpty) {
-                    showErrorToastMessage("Select the Brand type".translate(context));
+                    showErrorToastMessage("Selecione o tipo de marca".translate(context));
                     return ;
                   }
                   if (state.textEditingVehicleModelController.text.isEmpty) {
-                    showErrorToastMessage("Select the Model type".translate(context));
+                    showErrorToastMessage("Selecione o tipo de modelo".translate(context));
                     return ;
                   }
                   if (state.textEditingVehicleNumberController.text.isEmpty) {
@@ -128,14 +128,14 @@ class _EditVehicleScreenState extends State<EditVehicleScreen> {
                   final addItemMap = context.read<AddItemMap>();
                   addItemMap.insertToMap(
                       "metadados", jsonEncode(metaDataMap.state));
-                  addItemMap.insertToMap("make", state.state.vehicleMake);
+                  addItemMap.insertToMap("fazer", state.state.vehicleMake);
 
                   addItemMap.insertToMap(
-                      "model", state.textEditingVehicleModelController.text);
-                  addItemMap.insertToMap("year", state.state.vehicleYear);
+                      "modelo", state.textEditingVehicleModelController.text);
+                  addItemMap.insertToMap("ano", state.state.vehicleYear);
                   addItemMap.insertToMap(
-                      "color", state.textEditingVehicleColorController.text);
-                  addItemMap.insertToMap("registration_number",
+                      "cor", state.textEditingVehicleColorController.text);
+                  addItemMap.insertToMap("número_de_registro",
                       state.textEditingVehicleNumberController.text);
                   context.read<VehicleRegisterCubit>().insertItem(
                         context: context,
@@ -158,7 +158,7 @@ class _EditVehicleScreenState extends State<EditVehicleScreen> {
                   .getVehicleItemData(context: context);
               goBack();
             },
-            title: "Edit Vehicle",
+            title: "Editar veículo",
             backgroundColor: notifires.getbgcolor,
             titleColor: notifires.getGrey1whiteColor),
         body: BlocListener<VehicleRegisterCubit, VehicleRegisterState>(

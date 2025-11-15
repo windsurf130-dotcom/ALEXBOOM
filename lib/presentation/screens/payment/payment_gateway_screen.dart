@@ -143,11 +143,11 @@ class _PaymentGatewayScreenState extends State<PaymentGatewayScreen> {
               children: [
                 const Icon(Icons.timer_off, size: 48, color: Colors.redAccent),
                 const SizedBox(height: 16),
-                Text("Payment Time Expired".translate(context),
+                Text("Prazo de pagamento expirado".translate(context),
                     style: heading2Grey1(context)),
                 const SizedBox(height: 12),
                 Text(
-                  "Your payment session has timed out. Redirecting...",
+                  "Sua sessão de pagamento expirou. Redirecionando....",
                   textAlign: TextAlign.center,
                   style: regular2(context).copyWith(color: Colors.grey),
                 ),
@@ -193,24 +193,24 @@ class _PaymentGatewayScreenState extends State<PaymentGatewayScreen> {
               ),
             ),
             const SizedBox(height: 16),
-            Text("Go Back?".translate(context),
+            Text("Volte?".translate(context),
                 style: heading1(context).copyWith(
                     fontWeight: FontWeight.w700,
                     color: notifires.getwhiteblackColor)),
             const SizedBox(height: 10),
-            Text("Are you sure you want to go back?".translate(context),
+            Text("Tem certeza de que deseja voltar??".translate(context),
                 textAlign: TextAlign.center,
                 style: regular2(context).copyWith(color: Colors.grey)),
             const SizedBox(height: 24),
             Row(children: [
               Expanded(
-                child: _buildDialogButton("Cancel", onTap: () {
+                child: _buildDialogButton("Cancelar", onTap: () {
                   Navigator.pop(context);
                 }),
               ),
               const SizedBox(width: 12),
               Expanded(
-                child: _buildDialogButton("Yes", filled: true, onTap: () {
+                child: _buildDialogButton("Sim", filled: true, onTap: () {
                   Navigator.pop(context);
                   goBack();
                 }),
@@ -264,7 +264,7 @@ class _PaymentGatewayScreenState extends State<PaymentGatewayScreen> {
         appBar: CustomAppBars(
           backgroundColor: notifires.getbgcolor,
           title:
-          "${"Payment".translate(context)} ${widget.fromBooking == true ? widget.price : ""}",
+          "${"Pagamento".translate(context)} ${widget.fromBooking == true ? widget.price : ""}",
           titleColor: notifires.getwhiteblackColor,
           onBackButtonPressed: _showBackDialog,
           actions: [

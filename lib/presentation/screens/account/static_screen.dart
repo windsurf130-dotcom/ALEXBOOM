@@ -67,7 +67,7 @@ class _StaticScreenState extends State<StaticScreen> {
             );
           } else if (state is StaticPageSuccess) {
             string = state.staticModel.data?.staticPage?.content ??
-                "Content not available".translate(context);
+                "Conteúdo não disponível".translate(context);
           } else if (state is StaticPageFailure) {
             showErrorToastMessage(state.error);
           }

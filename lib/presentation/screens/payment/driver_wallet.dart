@@ -102,7 +102,7 @@ class _DriverWalletScreenState extends State<DriverWalletScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Total Balance".translate(context),
+                            "Saldo Total".translate(context),
                             style: heading3Grey1(context).copyWith(
                               fontWeight: FontWeight.w500,
                               color: Colors.grey[700],
@@ -163,7 +163,7 @@ class _DriverWalletScreenState extends State<DriverWalletScreen> {
                                     color: blackColor, size: 20),
                                 const SizedBox(width: 6),
                                 Text(
-                                  "Add Money".translate(context),
+                                  "Adicionar dinheiro".translate(context),
                                   style: heading3Grey1(context).copyWith(
                                     color: blackColor,
                                     fontWeight: FontWeight.w600,
@@ -205,7 +205,7 @@ class _DriverWalletScreenState extends State<DriverWalletScreen> {
                                     color: blackColor, size: 20),
                                 const SizedBox(width: 6),
                                 Text(
-                                  "Withdraw".translate(context),
+                                  "Retirar".translate(context),
                                   style: heading3Grey1(context).copyWith(
                                     color: blackColor,
                                     fontWeight: FontWeight.w600,
@@ -228,7 +228,7 @@ class _DriverWalletScreenState extends State<DriverWalletScreen> {
               child: Row(
                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Transactions".translate(context),
+                  Text("Transações".translate(context),
                       style: heading2Grey1(context)),
                   const SizedBox(
                     width: 10,
@@ -265,7 +265,7 @@ class _DriverWalletScreenState extends State<DriverWalletScreen> {
                   child: walletTransactions.isEmpty
                       ? Center(
                           child: Text(
-                            "No transaction found".translate(context),
+                            "Nenhuma transação encontrada".translate(context),
                             style: regular2(context),
                           ),
                         )
@@ -289,7 +289,7 @@ class _DriverWalletScreenState extends State<DriverWalletScreen> {
   Widget _buildTransactionTile(
       WalletTransactionsDetails walletTransactionDetail) {
     bool isCredit =
-        walletTransactionDetail.type.toString().toLowerCase() == "credit";
+        walletTransactionDetail.type.toString().toLowerCase() == "crédito";
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
       padding: const EdgeInsets.all(14),

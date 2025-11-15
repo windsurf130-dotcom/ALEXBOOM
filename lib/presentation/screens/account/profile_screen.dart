@@ -62,19 +62,19 @@ class _EditProfileState extends State<EditProfile> {
       });
       // ignore: use_build_context_synchronously
       context.read<UpdateProfileCubit>().uploadProfileImage(postData: {
-        "profile_image": base64Img,
+        "imagem_de_perfil": base64Img,
       });
     }
   }
 
-  List<String> optionsList = ["Male", "Female", "Others"];
+  List<String> optionsList = ["Homem", "Mulher", "Outro"];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: whiteColor,
       appBar: CustomAppBar(
-        title: "Edit Profile".translate(context),
+        title: "Editar Perfil".translate(context),
         onBackTap: () {
           goBack();
         },
@@ -91,7 +91,7 @@ class _EditProfileState extends State<EditProfile> {
               data: logmod.Data.fromJson(state.loginModel.data!.toJson()));
           loginModel = loginModel;
           UserData userObj = UserData();
-          userObj.saveLoginData("UserData", jsonEncode(loginModel!.toJson()));
+          userObj.saveLoginData("Dados do usuário", jsonEncode(loginModel!.toJson()));
           context.read<UpdateProfileCubit>().clear();
           context
               .read<NameCubit>()
@@ -110,7 +110,7 @@ class _EditProfileState extends State<EditProfile> {
                   context.read<UpdateDriverParameterCubit>().state.driverId);
 
           UserData userObj = UserData();
-          userObj.saveLoginData("UserData", jsonEncode(loginModel!.toJson()));
+          userObj.saveLoginData("Dados do usuário", jsonEncode(loginModel!.toJson()));
         } else if (state is UpdateProfileFailed) {
           Widgets.hideLoder(context);
 
@@ -186,7 +186,7 @@ class _EditProfileState extends State<EditProfile> {
                     TextFieldAdvance(
                         icons: Icon(Icons.person_2_outlined,
                             color: notifires.getGrey2whiteColor),
-                        txt: "Enter Your Name".translate(context),
+                        txt: "Digite seu nome".translate(context),
                         textEditingControllerCommon:
                             textEditingEditProfileNameController,
                         inputType: TextInputType.name,
@@ -206,7 +206,7 @@ class _EditProfileState extends State<EditProfile> {
                           TextFieldAdvance(
                               icons: Icon(Icons.email_outlined,
                                   color: notifires.getGrey2whiteColor),
-                              txt: "Enter Your Email".translate(context),
+                              txt: "Digite seu e-mail".translate(context),
                               readOnly: true,
                               textEditingControllerCommon:
                                   textEditingEditProfileEmailController,
@@ -260,7 +260,7 @@ class _EditProfileState extends State<EditProfile> {
                             TextFieldAdvance(
                                 icons: Icon(Icons.call_outlined,
                                     color: notifires.getGrey2whiteColor),
-                                txt: "Enter Your Mobile".translate(context),
+                                txt: "Digite seu celular".translate(context),
                                 readOnly: true,
                                 textEditingControllerCommon:
                                     textEditingEditProfileNumberController,
@@ -315,7 +315,7 @@ class _EditProfileState extends State<EditProfile> {
                             onSelected: (value) {
                               loginModel!.data!.gender = value;
                             },
-                            hintText: "Gender".translate(context),
+                            hintText: "Gênero".translate(context),
                             checkmarkColor: acentColor,
                           );
                         })
@@ -325,18 +325,18 @@ class _EditProfileState extends State<EditProfile> {
             ),
             CustomsButtons(
                 textColor: blackColor,
-                text: "Update Profile".translate(context),
+                text: "Atualizar Perfil".translate(context),
                 backgroundColor: themeColor,
                 onPressed: () {
                   if (loginModel!.data!.gender == null) {
-                    showErrorToastMessage("Please select gender".translate(context));
+                    showErrorToastMessage("Por favor, selecione o gênero".translate(context));
                     return;
                   }
                   context
                       .read<UpdateProfileCubit>()
                       .updateProfileMethod(postData: {
-                    "gender": loginModel!.data!.gender!,
-                    "first_name": textEditingEditProfileNameController.text,
+                    "gênero": loginModel!.data!.gender!,
+                    "primeiro nome": textEditingEditProfileNameController.text,
                   });
                 }),
             const SizedBox(
@@ -371,7 +371,7 @@ class _EditProfileState extends State<EditProfile> {
             children: [
               Icon(Icons.photo, color: themeColor),
               const SizedBox(width: 10),
-              Text("Gallery".translate(context)),
+              Text("Galeria".translate(context)),
             ],
           ),
           onTap: () {

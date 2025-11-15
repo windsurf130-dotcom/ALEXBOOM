@@ -32,7 +32,7 @@ class _FinanceMainScreenState extends State<FinanceMainScreen> {
       },
       child: Scaffold(
         appBar: CustomAppBar(
-          title: "Finance".translate(context),
+          title: "Financiar".translate(context),
           isCenterTitle: true,
           isBackButton: widget.isFormHome,
         ),
@@ -43,9 +43,9 @@ class _FinanceMainScreenState extends State<FinanceMainScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 children: [
-                  _buildTabItem(0, "Wallet".translate(context)),
+                  _buildTabItem(0, "Carteira".translate(context)),
                   const SizedBox(width: 10),
-                  _buildTabItem(1, "Earning".translate(context))
+                  _buildTabItem(1, "Ganhando".translate(context))
                 ],
               ),
             ),

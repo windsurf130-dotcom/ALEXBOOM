@@ -17,17 +17,17 @@ class WalletRechargeScreen extends StatefulWidget {
 }
 
 class _WalletRechargeScreenState extends State<WalletRechargeScreen> {
-  final List<Map<String, String>> priceOptions = [
-    {"price": "100"},
-    {"price": "200"},
-    {"price": "500"},
-    {"price": "1000"},
-    {"price": "1500"},
-    {"price": "2000"},
+  final List<Map<String, String>> preçoOptions = [
+    {"preço": "100"},
+    {"preço": "200"},
+    {"preço": "500"},
+    {"preço": "1000"},
+    {"preço": "1500"},
+    {"preço": "2000"},
   ];
 
   int selectedIndex = -1;
-  final TextEditingController priceController = TextEditingController();
+  final TextEditingController preçoController = TextEditingController();
 
   void navigateToUrl({
     required String endpoint,
@@ -44,7 +44,7 @@ class _WalletRechargeScreenState extends State<WalletRechargeScreen> {
     debugPrint("url is $finalUrl");
 
     if (queryParams.values.any((value) => value.isEmpty)) {
-      showErrorToastMessage("Please provide all required parameters.");
+      showErrorToastMessage("Por favor, forneça todos os parâmetros necessários.");
     } else {
       goTo(pageBuilder(finalUrl));
     }
@@ -56,7 +56,7 @@ class _WalletRechargeScreenState extends State<WalletRechargeScreen> {
     return Scaffold(
       backgroundColor: notifires.getbgcolor,
       appBar: CustomAppBar(
-        title: "Add Money".translate(context),
+        title: "Adicionar dinheiro".translate(context),
 
         titleColor: notifires.getwhiteblackColor,
         backgroundColor: notifires.getbgcolor,
@@ -98,7 +98,7 @@ class _WalletRechargeScreenState extends State<WalletRechargeScreen> {
 
               // 💵 Compact Amount Input
               Text(
-                "Enter Amount".translate(context),
+                "Insira o valor".translate(context),
                 style: heading3Grey1(context),
               ),
               const SizedBox(height: 8),
@@ -141,7 +141,7 @@ class _WalletRechargeScreenState extends State<WalletRechargeScreen> {
                     // Text Field
                     Expanded(
                       child: TextField(
-                        controller: priceController,
+                        controller: preçoController,
                         keyboardType: TextInputType.number,
                         cursorColor: themeColor,
                         onChanged: (v) => setState(() => selectedIndex = -1),
@@ -153,7 +153,7 @@ class _WalletRechargeScreenState extends State<WalletRechargeScreen> {
                         ),
                         decoration: InputDecoration(
                           border: InputBorder.none,
-                          hintText: "Enter amount...".translate(context),
+                          hintText: "Insira o valor...".translate(context),
                           hintStyle: TextStyle(
                             color: notifires.getGrey3whiteColor.withOpacity(0.7),
                             fontSize: 14,
@@ -164,12 +164,12 @@ class _WalletRechargeScreenState extends State<WalletRechargeScreen> {
                     ),
 
                     // Clear Button (Optional)
-                    if (priceController.text.isNotEmpty)
+                    if (preçoController.text.isNotEmpty)
                       IconButton(
                         icon: Icon(Icons.clear, color: notifires.getGrey3whiteColor, size: 18),
                         onPressed: () {
                           setState(() {
-                            priceController.clear();
+                            preçoController.clear();
                             selectedIndex = -1;
                           });
                         },
@@ -181,13 +181,13 @@ class _WalletRechargeScreenState extends State<WalletRechargeScreen> {
               const SizedBox(height: 20),
 
               Text(
-                "Quick Select".translate(context),
+                "Seleção rápida".translate(context),
                 style: heading3Grey1(context),
               ),
               const SizedBox(height: 12),
 
               GridView.builder(
-                itemCount: priceOptions.length,
+                itemCount: preçoOptions.length,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -228,12 +228,12 @@ class _WalletRechargeScreenState extends State<WalletRechargeScreen> {
                         onTap: () {
                           setState(() {
                             selectedIndex = index;
-                            priceController.text = priceOptions[index]["price"]!;
+                            preçoController.text = preçoOptions[index]["preço"]!;
                           });
                         },
                         child: Center(
                           child: Text(
-                            "$currency ${priceOptions[index]["price"]}",
+                            "$currency ${preçoOptions[index]["preço"]}",
                             style: heading3Grey1(context).copyWith(color: grey1 ,fontSize: 13,fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -248,17 +248,17 @@ class _WalletRechargeScreenState extends State<WalletRechargeScreen> {
               SizedBox(
                 width: double.infinity,
                 height: 48,
-                child: CustomsButtons(text: "Proceed to Pay", backgroundColor: themeColor,  onPressed: () {
-                  if (priceController.text.isEmpty) {
+                child: CustomsButtons(text: "Proceder ao pagamento", backgroundColor: themeColor,  onPressed: () {
+                  if (preçoController.text.isEmpty) {
                     showErrorToastMessage(
-                        "Please enter an amount".translate(context));
+                        "Insira o valor".translate(context));
                     return;
                   }
                   navigateToUrl(
-                    endpoint: "/wallet_recharge",
+                    endpoint: "/carteira_recarga",
                     queryParams: {
                       "token": token,
-                      "amount": priceController.text,
+                      "amount": preçoController.text,
                       "currency": currency,
                     },
                     pageBuilder: (url) => PaymentGatewayScreen(
@@ -279,7 +279,7 @@ class _WalletRechargeScreenState extends State<WalletRechargeScreen> {
                     Icon(Icons.security,size: 12,color: grey4,),
                     const SizedBox(width: 10,),
                     Text(
-                      "Secure payment powered by RideOn".translate(context),
+                      "Pagamento seguro com tecnologia To Chegando Delivery".translate(context),
                       style: regular(context),
                     ),
                   ],

@@ -91,9 +91,9 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
         backgroundColor: whiteColor,
         body: Center(
           child: Text(
-            "No ride data available".translate(context),
+            "Não há dados de viagem disponíveis".translate(context),
             style: headingBlack(context),
-            semanticsLabel: "No ride data available".translate(context),
+            semanticsLabel: "Não há dados de viagem disponíveis".translate(context),
           ),
         ),
       );
@@ -133,7 +133,7 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            "Ride Information",
+            "Informações da Viagem",
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -142,7 +142,7 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
           const SizedBox(height: 12),
           rideInfoItem(
             icon: Icons.access_time,
-            title: "Date & Time",
+            title: "Data & Hora",
             value: formatTimestamp(bookingRideData?.timestamp ?? ""),
           ),
           Row(
@@ -150,7 +150,7 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
               Expanded(
                 child: rideInfoItem(
                   icon: Icons.straighten,
-                  title: "Distance",
+                  title: "Distância",
                   value:
                       "${bookingRideData?.totalDistance ?? ""} ${"Km".translate(context)}",
                 ),
@@ -158,9 +158,9 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
               Expanded(
                 child: rideInfoItem(
                   icon: Icons.timer,
-                  title: "Duration",
+                  title: "Duração",
                   value:
-                      "${bookingRideData?.totalTime ?? ""} ${"mins".translate(context)}",
+                      "${bookingRideData?.totalTime ?? ""} ${"min".translate(context)}",
                 ),
               ),
             ],
@@ -231,7 +231,7 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
                 Row(
                   children: [
                     Text(
-                      "${"You Rated".translate(context)} :",
+                      "${"Você Avaliou".translate(context)} :",
                       style: regular2(context),
                     ),
                     const SizedBox(width: 8),
@@ -263,7 +263,7 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
           height: _mapHeight,
           width: double.infinity,
           fit: BoxFit.cover,
-          semanticLabel: "Map preview".translate(context),
+          semanticLabel: "Visualização do mapa".translate(context),
         ),
         Positioned(
           top: 50,
@@ -277,7 +277,7 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
                     Icons.arrow_back_ios,
                     size: _iconSize,
                     color: grey2,
-                    semanticLabel: "Back".translate(context),
+                    semanticLabel: "Voltar".translate(context),
                   ),
                 ],
               ),
@@ -291,7 +291,7 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
             formatDate(rideData.rideDate!),
             style: headingBlackBold(context).copyWith(fontSize: 22),
             semanticsLabel:
-                "${"Ride date".translate(context)}: ${formatDate(rideData.rideDate!)}",
+                "${"Data da viagem".translate(context)}: ${formatDate(rideData.rideDate!)}",
           ),
         ),
         Positioned(
@@ -306,14 +306,14 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
                       "N/A".translate(context),
                   style: headingBlackBold(context).copyWith(fontSize: 18),
                   semanticsLabel:
-                      "${"Ride token".translate(context)}: ${rideData.token ?? "N/A".translate(context)}",
+                      "${"Código da viagem".translate(context)}: ${rideData.token ?? "N/A".translate(context)}",
                 ),
                 const SizedBox(width: 8),
                 Icon(
                   Icons.copy,
                   size: 16,
                   color: grey2,
-                  semanticLabel: "Copy token".translate(context),
+                  semanticLabel: "Copiar codigo".translate(context),
                 ),
               ],
             ),
@@ -360,20 +360,20 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
                 Icons.circle,
                 color: greenColor2,
                 size: 8,
-                semanticLabel: "Pickup location marker".translate(context),
+                semanticLabel: "Marcador de local de coleta".translate(context),
               ),
               SvgPicture.asset(
                 "assets/images/Line.svg",
                 height: 65,
                 // ignore: deprecated_member_use
                 color: grey4,
-                semanticsLabel: "Route line".translate(context),
+                semanticsLabel: "Linha de rota".translate(context),
               ),
               Icon(
                 Icons.circle,
                 color: redColor,
                 size: 8,
-                semanticLabel: "DropOff location marker".translate(context),
+                semanticLabel: "Marcador de local de entrega".translate(context),
               ),
             ],
           ),
@@ -390,7 +390,7 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   semanticsLabel:
-                      "${"Pickup".translate(context)}: ${rideData.pickupLocation?.address ?? "N/A".translate(context)}",
+                      "${"Escolher".translate(context)}: ${rideData.pickupLocation?.address ?? "N/A".translate(context)}",
                 ),
                 const SizedBox(height: 15),
                 Text(
@@ -400,7 +400,7 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   semanticsLabel:
-                      "${"DropOff".translate(context)}: ${rideData.dropoffLocation?.address ?? "N/A".translate(context)}",
+                      "${"Escolher".translate(context)}: ${rideData.dropoffLocation?.address ?? "N/A".translate(context)}",
                 ),
               ],
             ),
@@ -467,53 +467,53 @@ class _HistoryDetailScreenState extends State<HistoryDetailScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Bill Details".translate(context),
+            "Detalhes da fatura".translate(context),
             style: headingBlackBold(context).copyWith(fontSize: 20),
-            semanticsLabel: "Bill Details section".translate(context),
+            semanticsLabel: "Seção Detalhes da fatura".translate(context),
           ),
           const SizedBox(height: 16),
           if (isNonZero(rideData.basePrice))
             buildBillRow(
               context,
-              "Base Fare".translate(context),
+              "Tarifa base".translate(context),
               "${rideData.currencyCode ?? ""} ${rideData.basePrice}",
             ),
           if (isNonZero(rideData.basePrice)) const SizedBox(height: 12),
           if (isNonZero(rideData.adminCommission))
             buildBillRow(
               context,
-              "Platform Fee".translate(context),
+              "Taxa de plataforma".translate(context),
               "${rideData.currencyCode ?? ""} ${rideData.adminCommission}",
             ),
           if (isNonZero(rideData.adminCommission)) const SizedBox(height: 12),
           if (isNonZero(rideData.ivaTax))
             buildBillRow(
               context,
-              "Tax".translate(context),
+              "Imposto".translate(context),
               "${rideData.currencyCode ?? ""} ${rideData.ivaTax}",
             ),
           if (isNonZero(rideData.ivaTax)) const SizedBox(height: 12),
           if (isNonZero(rideData.serviceCharge))
             buildBillRow(
               context,
-              "Service Charges".translate(context),
+              "Taxas de serviço".translate(context),
               "${rideData.currencyCode ?? ""} ${rideData.serviceCharge}",
             ),
           if (isNonZero(rideData.serviceCharge)) const SizedBox(height: 12),
           if (isNonZero(rideData.vendorCommission))
             buildBillRow(
               context,
-              "Driver Earnings".translate(context),
+              "Ganhos do motorista".translate(context),
               "${rideData.currencyCode ?? ""} ${rideData.vendorCommission}",
             ),
           const SizedBox(
             height: 20,
           ),
-          rideData.status.toString() == "Completed"
+          rideData.status.toString() == "Concluída"
               ? Row(
                   children: [
                     Text(
-                      "Payment method".translate(context),
+                      "Método de pagamento".translate(context),
                       style: heading3Grey1(context),
                     ),
                     const Spacer(),

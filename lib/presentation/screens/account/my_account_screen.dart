@@ -64,7 +64,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
           surfaceTintColor: notifires.getbgcolor,
           backgroundColor: notifires.getbgcolor,
           title: Text(
-            "My Accounts".translate(context),
+            "Minhas contas".translate(context),
             style: headingBlack(context).copyWith(fontSize: 20),
           ),
           centerTitle: true,
@@ -209,7 +209,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                                     ],
                                   ),
                                   Text(
-                                    "RATING".translate(context),
+                                    "AVALIAÇÃO".translate(context),
                                     style: regular(context),
                                   )
                                 ],
@@ -222,7 +222,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                                       : Text("0",
                                           style: headingBlackBold(context)),
                                   Text(
-                                    "ORDERS".translate(context),
+                                    "PEDIDOS".translate(context),
                                     style: regular(context),
                                   ),
                                 ],
@@ -249,7 +249,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                     const SizedBox(height: 15),
                     CustomRowAccountItem(
                       imagePath: "assets/images/ride_history.svg",
-                      title: "History",
+                      title: "História",
                       onTap: () {
                         Navigator.push(
                             context,
@@ -262,7 +262,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                     CustomRowAccountItem(
                       imagePath: "",
                       icon: Icons.account_balance_wallet_outlined,
-                      title: "Earnings",
+                      title: "Ganhos",
                       onTap: () {
                         goTo(const FinanceMainScreen(
                           isFormHome: false,
@@ -273,7 +273,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                     CustomRowAccountItem(
                       imagePath: "",
                       icon: Icons.account_balance_wallet_outlined,
-                      title: "Payout Options",
+                      title: "Opções de pagamento",
                       onTap: () {
                         goTo(const PaymentMethodsScreen(
                           
@@ -292,7 +292,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                     CustomRowAccountItem(
                       imagePath: "",
                       icon: CupertinoIcons.car,
-                      title: "Vehicle's Information",
+                      title: "Informações do veículo",
                       onTap: () {
                         goTo(const VehicleInformationScreen());
                       },
@@ -300,7 +300,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                     const SizedBox(height: 15),
                     CustomRowAccountItem(
                       imagePath: "assets/images/ride_history.svg",
-                      title: "Edit Document",
+                      title: "Editar documento",
                       onTap: () {
                         Navigator.push(
                             context,
@@ -312,10 +312,10 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                     const SizedBox(height: 15),
                     CustomRowAccountItem(
                       imagePath: "assets/images/ride_history.svg",
-                      title: "About us",
+                      title: "Sobre nós",
                       onTap: () {
                         goTo(const StaticScreen(
-                          data: "About Us",
+                          data: "Sobre nós",
                           isBack: true,
                         ));
                       },
@@ -337,7 +337,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                     const SizedBox(height: 15),
                     CustomRowAccountItem(
                       imagePath: "assets/images/add_location.svg",
-                      title: "Change Language",
+                      title: "Mudar idioma",
                       onTap: () {
                         goTo(const ChangeLanguage());
                       },
@@ -346,7 +346,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                     CustomRowAccountItem(
                       imagePath: "",
                       icon: Icons.delete_outline,
-                      title: "Delete Account",
+                      title: "Excluir conta",
                       onTap: () {
                         showDialog(
                           context: context,
@@ -360,7 +360,7 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                     BlocConsumer<LogoutCubit, LogoutState>(
                       listener: (context, state) {
                         if (state is LogoutFailure) {
-                          showErrorToastMessage("Logout Failed: ${state.error}");
+                          showErrorToastMessage("Falha ao sair: ${state.error}");
                         } else if (state is LogoutSuccess) {
                           box.put('isDocumentStatusShown', false);
                           Navigator.push(
@@ -373,11 +373,11 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                         return CustomRowAccountItem(
                           imagePath: "",
                           icon: Icons.logout_outlined,
-                          title: "Logout",
+                          title: "Sair",
                           onTap: () {
                             showDynamicBottomSheets(context,
-                                title: "Logout".translate(context),
-                                description: "Are you sure You Want to Logout?"
+                                title: "Sair".translate(context),
+                                description: "Tem certeza de que deseja sair??"
                                     .translate(context),
                                 firstButtontxt: "Cancel".translate(context),
                                 secondButtontxt: "Yes".translate(context),
