@@ -310,7 +310,7 @@ class _DriverEarningState extends State<DriverEarning> {
                                     if (_startDate.toString() !=
                                         _endDate.toString())
                                       Text(
-                                        "De".translate(context),
+                                        "De",
                                         style: regular(context)
                                             .copyWith(color: grey3),
                                       ),
@@ -335,7 +335,7 @@ class _DriverEarningState extends State<DriverEarning> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     Text(
-                                      "Até".translate(context),
+                                      "Até",
                                       style: regular(context)
                                           .copyWith(color: grey3),
                                     ),
@@ -386,7 +386,7 @@ class _DriverEarningState extends State<DriverEarning> {
                                           Icon(iconData, color: themeColor),
                                           const SizedBox(width: 10),
                                           Text(
-                                            option.translate(context),
+                                            option,
                                             style: const TextStyle(
                                                 fontWeight: FontWeight.w600),
                                           ),
@@ -421,7 +421,7 @@ class _DriverEarningState extends State<DriverEarning> {
                                         color: Colors.blueAccent),
                                     const SizedBox(width: 10),
                                     Text(
-                                      _selectedRange.translate(context),
+                                      _selectedRange,
                                       style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black87,
@@ -444,10 +444,10 @@ class _DriverEarningState extends State<DriverEarning> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           _buildCard("$currency $totalEarning",
-                              "Ganhos Totais".translate(context)),
+                              "Ganhos Totais"),
                           const SizedBox(width: 12),
                           _buildCard(totalBooking,
-                              "Total de Corridas".translate(context)),
+                              "Total de Corridas"),
                         ],
                       ),
                     const SizedBox(height: 20),
@@ -458,7 +458,7 @@ class _DriverEarningState extends State<DriverEarning> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              "Transações Recentes".translate(context),
+                              "Transações Recentes",
                               style: headingBlack(context),
                             ),
                           ],
@@ -469,7 +469,7 @@ class _DriverEarningState extends State<DriverEarning> {
                       rideList.isEmpty
                           ? Center(
                               child: Text(
-                                  "Nenhuma transação encontrada".translate(context)))
+                                  "Nenhuma transação encontrada"))
                           : ListView.separated(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
@@ -500,7 +500,7 @@ class _DriverEarningState extends State<DriverEarning> {
                                             Text(
                                               data.status
                                                       ?.toString()
-                                                      .translate(context) ??
+                                                       ??
                                                   "",
                                               style: headingBlack(context)
                                                   .copyWith(fontSize: 16),
@@ -568,7 +568,7 @@ class _DriverEarningState extends State<DriverEarning> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            value.translate(context),
+            value,
             style: headingBlackBold(context).copyWith(fontSize: 18),
           ),
           const SizedBox(height: 5),
@@ -603,7 +603,7 @@ class _DriverEarningState extends State<DriverEarning> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      "Select Custom Date Range".translate(context),
+                      "Select Custom Date Range",
                       style: headingBlack(context).copyWith(fontSize: 18),
                     ),
                     const SizedBox(height: 20),
@@ -624,8 +624,8 @@ class _DriverEarningState extends State<DriverEarning> {
                             textAlign: TextAlign.center,
                             textStyle: heading2Grey1(context),
                           ),
-                          cancelText: "CANCEL".translate(context),
-                          confirmText: "OK".translate(context),
+                          cancelText: "CANCEL",
+                          confirmText: "OK",
                           selectionColor: themeColor,
                           startRangeSelectionColor: themeColor,
                           rangeSelectionColor: themeColor.withValues(alpha: .1),
